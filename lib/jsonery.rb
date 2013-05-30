@@ -1,6 +1,6 @@
 require "jsonery/version"
+require 'json'
 require_relative 'Iterator'
-require_relative 'test_data/example1.json'
 
 
 JSON = {'users'=>[{'username'=>'bigs', 'password'=>'1234'}, {'username'=>'jimmy', 'password'=>'4567'}]}
