@@ -1,4 +1,4 @@
 require 'spec_helper'
-describe Foobar do
+describe Iterator do
     pending "write it"
 end
