@@ -5,11 +5,9 @@ JSON = {'users'=>[{'username'=>'bigs', 'password'=>'1234'}, {'username'=>'jimmy'
 module Jsonery
   puts "Please enter query:\n"
   query = gets
-  while query != 'exit' or query != 'quit' do
+  while query.to_s != 'exit' and query.to_s != 'quit' do
     puts JSON.inspect
-    JSON.each do |key, value|
-      Iterator.iterate value 
-    end
+    Iterator.new.iterate value 
     query = gets
   end
 
