@@ -2,19 +2,15 @@ require "jsonery/version"
 require 'json'
 require_relative 'Iterator'
 
-
-JSON = {'users'=>[{'username'=>'bigs', 'password'=>'1234'}, {'username'=>'jimmy', 'password'=>'4567'}]}
-
 module Jsonery
   puts "Please enter query:\n"
   query = gets
-  file = File.open("test_data/example1.json", "r")
+  file = File.open("example1.json", "r")
   data = file.read
   file.close
-  JSON = JSON.parse(data)
+  json = JSON.parse(data)
   while query.to_s != 'exit' and query.to_s != 'quit' do
-    puts JSON.inspect
-    Iterator.new.iterate JSON
+    Iterator.new.iterate json
     query = gets
   end
 

@@ -12,10 +12,8 @@ class Iterator
 
   def array json
     puts "array"
-    json.each do |key, value|
-      puts "KEY: #{key}"
-      puts "VALUE: #{value}"
-      iterate value
+    json.each do |obj|
+      iterate obj
     end
   end
 
