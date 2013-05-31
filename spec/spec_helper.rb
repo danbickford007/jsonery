@@ -1,3 +1,5 @@
 require 'rubygems'
 require 'bundler/setup'
 require 'iterator'
+require 'query'
+require 'database'

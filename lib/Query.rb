@@ -4,9 +4,7 @@ class Query
 
   def initialize
     puts "Please enter a query:\n"
-    @query = gets
     get_json
-    Database.new
   end 
 
   def get_json
@@ -18,8 +16,15 @@ class Query
   end
 
   def server
+    @db = Database.new
+    @query = gets
+    tables = []
     while @query.to_s != 'exit' and @query.to_s != 'quit' do
-      Iterator.new.iterate @json
+      iterator = Iterator.new
+      iterator.iterate @json
+      tables += iterator.tables
+      @db.create_tables tables
+      @db.pull_information @query
       @query = gets
     end
     return

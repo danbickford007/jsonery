@@ -1,12 +1,16 @@
 class Iterator
 
+  attr_accessor :tables
+
+  def initialize
+    @tables = []
+  end
+
   def iterate json
     if json.class == Array
       array json
     elsif json.class == Hash
       hash json
-    else
-      puts 'this doesnt look like json?'
     end
   end
 
@@ -20,8 +24,11 @@ class Iterator
   def hash json
     puts 'json'
     json.each do |key, value|
-      puts "KEY: #{key}"
-      puts "VALUE: #{value}"
+      #puts "KEY: #{key}"
+      #puts "VALUE: #{value}"
+      if value.class == Hash or value.class == Array
+        @tables << key
+      end
       iterate value
     end
   end
