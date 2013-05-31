@@ -6,6 +6,7 @@ class Query
     puts "Please enter a query:\n"
     @query = gets
     get_json
+    Database.new
   end 
 
   def get_json
