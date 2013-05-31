@@ -8,11 +8,10 @@ class Query
   end 
 
   def get_json
-    file = File.open("example1.json", "r")
+    file = File.open("example2.json", "r")
     data = file.read
     file.close
     @json = JSON.parse(data)
-    server
   end
 
   def server

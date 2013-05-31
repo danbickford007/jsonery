@@ -1,5 +1,5 @@
 {"web-app": {
-  "servlet": [   
+  "users": [   
     {
       "servlet-name": "cofaxCDS",
       "servlet-class": "org.cofax.cds.CDSServlet",

@@ -15,19 +15,21 @@ class Iterator
   end
 
   def array json
-    puts "array"
     json.each do |obj|
       iterate obj
     end
   end
 
   def hash json
-    puts 'json'
     json.each do |key, value|
-      #puts "KEY: #{key}"
-      #puts "VALUE: #{value}"
       if value.class == Hash or value.class == Array
-        @tables << key
+        hash = {'name'=>key, 'columns'=>[]}
+        if value.class == Array
+          hash['columns'] = value.first.keys
+        else
+          hash['columns'] = value.keys
+        end
+        @tables << hash
       end
       iterate value
     end

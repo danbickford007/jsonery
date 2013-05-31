@@ -12,19 +12,25 @@ class Database
 
   def create_tables tables
     tables.each do |table|
-      table = table.gsub('-','')
+      t = table['name'].gsub('-','')
+      columns = table['columns'].join(' varchar(100), ')
+      columns += " varchar(100)"
       @db.execute %Q{
-        CREATE TABLE IF NOT EXISTS #{table} (
+        CREATE TABLE IF NOT EXISTS #{t} (
         id integer primary key,
-        term varchar(100),
-        meaning varchar(100))
+        #{columns})
       }
-      read_table table 
+      insert_column_names(t, table)
+      read_table(t, table)
     end
   end
 
-  def read_table table
-    stm = @db.prepare "SELECT * FROM #{table} LIMIT 5" 
+  def insert_column_names(name, table)
+    @db.execute "INSERT INTO #{name} (term) VALUES ('Tom')"
+  end
+
+  def read_table(name, table)
+    stm = @db.prepare "SELECT * FROM #{name} LIMIT 5" 
     rs = stm.execute 
   
     rs.each do |row|
@@ -35,10 +41,13 @@ class Database
   def pull_information query
     stm = @db.prepare query 
     rs = stm.execute 
-  
+    puts "----------------------------\n"
+    puts "DATA RESULT:\n"  
     rs.each do |row|
+        puts ">>>>>>>>>>>>#{row.inspect}"
         puts row.join "\s"
     end
+    puts "----------------------------\n"
 
   end
 

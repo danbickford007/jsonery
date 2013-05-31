@@ -5,5 +5,5 @@ require_relative 'Query'
 require_relative 'Database'
 
 module Jsonery
-  Query.new
+  Query.new.server
 end
