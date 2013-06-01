@@ -13,8 +13,7 @@ class Database
   def create_tables tables
     tables.each do |table|
       t = table['name'].gsub('-','')
-      columns = table['columns'].join(' varchar(100), ')
-      columns += " varchar(100)"
+      columns = parse_columns table
       @db.execute %Q{
         CREATE TABLE IF NOT EXISTS #{t} (
         id integer primary key,
@@ -25,8 +24,14 @@ class Database
     end
   end
 
+  def parse_columns table
+    columns = table['columns'].join(' varchar(100), ')
+    columns += " varchar(100)"
+    columns
+  end
+
   def insert_column_names(name, table)
-    @db.execute "INSERT INTO #{name} (term) VALUES ('Tom')"
+    @db.execute "INSERT INTO #{name} (#{table['columns'].join(',')}) VALUES ('Tom', '6666')"
   end
 
   def read_table(name, table)
