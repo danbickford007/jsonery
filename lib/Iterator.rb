@@ -23,11 +23,15 @@ class Iterator
   def hash json
     json.each do |key, value|
       if value.class == Hash or value.class == Array
-        hash = {'name'=>key, 'columns'=>[]}
+        hash = {'name'=>key}
+        hash[key] = []#{'columns'=>[], 'values'=>[]}
         if value.class == Array
-          hash['columns'] = value.first.keys
+          value.each do |val|
+            hash[key] << {'columns'=>val.keys, 'values'=>val.values}
+          end
         else
-          hash['columns'] = value.keys
+          hash[key]['columns'] = value.keys
+          hash[key]['values'] = value.values
         end
         @tables << hash
       end
