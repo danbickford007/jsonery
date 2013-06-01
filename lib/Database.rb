@@ -68,7 +68,6 @@ class Database
     puts "----------------------------\n"
     puts "DATA RESULT:\n"  
     rs.each do |row|
-        puts ">>>>>>>>>>>>#{row.inspect}"
         puts row.join "\s"
     end
     puts "----------------------------\n"
