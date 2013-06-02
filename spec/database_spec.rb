@@ -36,4 +36,16 @@ describe Database do
 
   end
 
+  context '#parse_values' do
+
+    context 'adding single string value format for sql insert' do
+
+      it 'should find all values and surround with single quotes' do
+        @database.parse_values('users', @data_object.first).should == ["'bigs','1234'", "'nessa','4567'"]
+      end 
+
+    end
+
+  end
+
 end
