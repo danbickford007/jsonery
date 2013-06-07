@@ -16,7 +16,7 @@ class Query
 
   def server
     @db = Database.new
-    @query = gets
+    @query = STDIN.gets
     tables = []
     while @query.to_s != 'exit' and @query.to_s != 'quit' do
       iterator = Iterator.new
@@ -24,7 +24,7 @@ class Query
       tables += iterator.tables
       @db.create_tables tables
       @db.pull_information @query
-      @query = gets
+      @query = STDIN.gets
     end
     return
   end

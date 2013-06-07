@@ -1,9 +1,12 @@
 #!/usr/bin/env ruby
 $LOAD_PATH << File.expand_path('../../lib', __FILE__)
 
+require 'jsonery'
+
 case ARGV.first
 when 'load'
   puts "loading..."
+  Jsonery.new
 else
   puts "USAGE:\n"
 end
