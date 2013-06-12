@@ -1,5 +1,3 @@
 require 'rubygems'
 require 'bundler/setup'
-require 'iterator'
-require 'query'
-require 'database'
+require_relative '../lib/jsonery'
