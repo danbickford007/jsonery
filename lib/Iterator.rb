@@ -30,8 +30,9 @@ class Iterator
             hash[key] << {'columns'=>val.keys, 'values'=>val.values}
           end
         else
-          hash[key]['columns'] = value.keys
-          hash[key]['values'] = value.values
+          hash[key] << {'columns'=>value.keys, 'values'=>value.values}
+          #hash[key]['columns'] = value.keys
+          #hash[key]['values'] = value.values
         end
         @tables << hash
       end
