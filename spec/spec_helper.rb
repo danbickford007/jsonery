@@ -1,3 +1,6 @@
 require 'rubygems'
 require 'bundler/setup'
-require_relative '../lib/jsonery'
+require_relative '../lib/iterator'
+require_relative '../lib/query'
+require_relative '../lib/database'
+#require_relative '../lib/jsonery'
